@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Prueba</title>
+	<link rel="stylesheet" type="text/css" href="./recursos/style.css" />
+</head>
+<body>
+
+	<h1>Prueba para hoja de clientes</h1>
+
+	<div>
+		<h2>Zona para conocer los ID ocupados</h2>
+	</div>
+
+	<hr>
+
+	<div class="addClientContainer">
+		<h2 class="addClientTitle">Clientes</h2>
+
+		<form id="addClient">
+			<input type="text" name="nombre" placeholder="Nombre de la persona o comercial" />
+			
+			<input type="text" name="direccion" placeholder="Direccion del cliente" />
+
+			<input type="number" name="telefono" placeholder="Numero de telefono" />
+
+			<input type="email" name="email" placeholder="Direccion del correo electronico" />
+
+			<input type="web" name="web" placeholder="Pagina web del cliente" />
+
+			<textarea class="comentarios" placeholder="Comentarios"></textarea>
+
+			<label for="esVisitado">¿Este cliente esta siendo visitado?</label>
+
+			<select name="esVisitado" id="esVisitado">
+				<option value="si">Si</option>
+				<option value="no">No</option>
+			</select>
+
+			<input type="submit" name="agregar">
+		</form>
+	</div>
+
+	<hr>
+
+	<div>
+		<h2>Lista de clientes registrados</h2>
+
+		<div class="clientsContainer">
+
+
+			<div class="clientCard">
+				<p>Nombre: </p>
+				<p>Direccion: </p>
+				<p>Numero de telefono: </p>
+				<p>Correo electronico: </p>
+				<p>Pagina web: </p>
+				<p>Comentarios: </p>
+				<p>¿El cliente es visitado?</p>
+			</div>
+			
+		</div>
+	</div>
+
+<script type="text/javascript" src="./recursos/main.js">
+</script>
+</body>
+</html>
