@@ -14,8 +14,17 @@
 
 	<hr>
 
+	<nav class="addFormActiveContainer">
+		
+		<ul class="addFormActiveList">
+			<li class="client-active addFormActive">Cliente</li>
+			<li class="vendedor-active">Vendedor</li>
+		</ul>
+
+	</nav>
+	
 	<div class="addDataContainer">
-		<div class="addDataFormContainer">
+		<div class="addDataFormContainer" data-client-container data-add-form-active>
 			<h2 class="addClientTitle">Clientes</h2>
 
 			<form id="addClient">
@@ -42,7 +51,7 @@
 			</form>
 		</div>
 		
-		<div class="addDataFormContainer">
+		<div class="addDataFormContainer" data-vendedores-container>
 			<h2 class="addClientTitle">Vendedores</h2>
 
 			<form id="addClient">
