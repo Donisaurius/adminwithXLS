@@ -4,14 +4,32 @@ const d = document,
 d.addEventListener("DOMContentLoaded", e => { 
 	console.log("Documento cargado");
 	//getSheet("/v1/9WI8tRU1SFaC/academias-gastronomicas-caracas/Academias_gastronomicas");
+	checkVisibility();
 })
 
 d.addEventListener("click",e => { 
 	if(e.target.matches("#addClient input[type='submit']")){ 
 		e.preventDefault();
 		//agregarDataAcademiaGastronomicas(e); 
+	}
+
+	if(e.target.matches(".addFormActiveList li")){
+
+		activeAddForm(e);
+
 	} 
 })
+
+const activeAddForm = (e) => {
+	
+	for(let x = 0; x < d.querySelectorAll(".addFormActive").length ; x++){
+		if(d.querySelectorAll(".addFormActive")[x] !== e.target){
+			d.querySelectorAll(".addFormActive")[x].classList.remove("addFormActive");
+		}
+	}
+
+	e.target.classList.toggle("addFormActive");
+}
 
 const agregarDataAcademiaGastronomicas = (e) => { 
 
@@ -107,3 +125,9 @@ const deleteRowSheetVendedor = () => {
 w.addEventListener("load",e => {
 	console.log("Documento cargado completamente")
 })
+
+const checkVisibility = () => {
+	console.log("Chequeando");
+	let $elActive = d.querySelector(".addFormActive");
+	console.log($elActive);
+}
