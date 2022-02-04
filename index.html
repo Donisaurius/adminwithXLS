@@ -24,25 +24,25 @@
 	</nav>
 	
 	<div class="addDataContainer">
-		<div class="addDataFormContainer" data-client-container data-add-form-active>
-			<h2 class="addClientTitle">Clientes</h2>
+		<div class="addDataFormContainer" data-client-container>
+			<h2 class="addFormTitle">Cliente</h2>
 
-			<form id="addClient">
-				<input type="text" name="nombre" placeholder="Nombre de la persona o comercial" />
+			<form id="addClient" class='addDataForm'>
+				<input type="text" name="nombre" placeholder="Nombre de la persona o comercial" required/>
 			
-				<input type="text" name="direccion" placeholder="Direccion del cliente" />
+				<input type="text" name="direccion" placeholder="Direccion del cliente" required />
 
-				<input type="number" name="telefono" placeholder="Numero de telefono" />
+				<input type="number" name="telefono" placeholder="Numero de telefono" required />
 
-				<input type="email" name="email" placeholder="Direccion del correo electronico" />
+				<input type="email" name="email" placeholder="Direccion del correo electronico" required />
 
-				<input type="web" name="web" placeholder="Pagina web del cliente" />
+				<input type="web" name="web" placeholder="Pagina web del cliente" required />
 
-				<textarea class="comentarios" placeholder="Comentarios"></textarea>
+				<textarea class="comentarios" placeholder="Comentarios" required></textarea>
 
 				<label for="esVisitado">¿Este cliente esta siendo visitado?</label>
 
-				<select name="esVisitado" id="esVisitado">
+				<select name="esVisitado" id="esVisitado" required>
 					<option value="si">Si</option>
 					<option value="no">No</option>
 				</select>
@@ -52,27 +52,16 @@
 		</div>
 		
 		<div class="addDataFormContainer" data-vendedores-container>
-			<h2 class="addClientTitle">Vendedores</h2>
+			<h2 class="addFormTitle">Vendedor</h2>
 
-			<form id="addClient">
-				<input type="text" name="nombre" placeholder="Nombre de la persona o comercial" />
-			
-				<input type="text" name="direccion" placeholder="Direccion del cliente" />
+			<form id="addVendedor" class='addDataForm'>
+				<input type="text" name="nombre" placeholder="Nombre del vendedor" required='' />
 
-				<input type="number" name="telefono" placeholder="Numero de telefono" />
+				<input type="number" name="telefono" placeholder="Numero de telefono" required/>
 
-				<input type="email" name="email" placeholder="Direccion del correo electronico" />
+				<input type="text" name="zona" placeholder="Zona en la que opera el vendedor" required/>				
 
-				<input type="web" name="web" placeholder="Pagina web del cliente" />
-
-				<textarea class="comentarios" placeholder="Comentarios"></textarea>
-
-				<label for="esVisitado">¿Este cliente esta siendo visitado?</label>
-
-				<select name="esVisitado" id="esVisitado">
-					<option value="si">Si</option>
-					<option value="no">No</option>
-				</select>
+				<textarea class="comentarios" placeholder="Comentarios" required></textarea>
 
 				<input type="submit" name="agregar">
 			</form>
