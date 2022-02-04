@@ -13,9 +13,16 @@ d.addEventListener("click",e => {
 		//agregarDataAcademiaGastronomicas(e); 
 	}
 
+	if(e.target.matches('#addVendedor input[type="submit"]')){
+
+		gettingDataOfFormVendedor(e);
+
+	}
+
 	if(e.target.matches(".addFormActiveList li")){
 
 		activeAddForm(e);
+		checkVisibility();
 
 	} 
 })
@@ -59,12 +66,35 @@ const getSheetAcademiaGastronomica = (url) => {
 
 }
 
-	
-const postRowSheetVendedor = (nombre,zona,telefono) => {
-		
-	let obj = { "Nombre": nombre, "Zona": zona, "Telefono": telefono }
 
-	setToSheet(obj);
+const gettingDataOfFormVendedor = (e) => {
+
+	e.preventDefault();
+
+	let form = e.target.closest('form'),
+	nombre = form.nombre.value,
+	telefono = form.telefono.value,
+	zona = form.zona.value,
+	comentarios = form.querySelector('.comentarios').value;
+
+	if(!nombre || !telefono || !zona || !comentarios){
+		return console.log('No enviar')
+	}
+
+	form.reset()
+
+	console.log(nombre, telefono, zona, comentarios);
+
+	postRowSheetVendedor(nombre,zona,telefono,comentarios);
+
+}
+
+	
+const postRowSheetVendedor = (nombre,zona,telefono, comentarios) => {
+		
+	let obj = { "Nombre": nombre, "Zona": zona, "Telefono": telefono, "Comentarios": comentarios }
+
+	//setToSheet(obj);
 	
 }
 	
@@ -127,7 +157,35 @@ w.addEventListener("load",e => {
 })
 
 const checkVisibility = () => {
-	console.log("Chequeando");
+	//console.log("Chequeando");
 	let $elActive = d.querySelector(".addFormActive");
-	console.log($elActive);
+	let $elActiveParent = $elActive.closest("ul");
+	let children, index;
+	let parentAddForms = d.querySelector('.addDataContainer');
+	for(let i = 0; i < $elActiveParent.children.length; i++){
+
+		children =$elActiveParent.children[i];		
+
+		if(children.classList.contains('addFormActive')){
+			//console.log(children);
+			index = i;
+		}			
+	}
+
+	for(let i = 0; i < parentAddForms.children.length; i++){
+
+
+		if(index === i){
+			let formToShow = parentAddForms.children[index];
+
+			formToShow.setAttribute('data-add-form-active','')
+		}else{
+		
+			parentAddForms.children[i].removeAttribute('data-add-form-active')
+		
+		}
+
+
+	}
+	
 }
