@@ -1,6 +1,8 @@
 const d = document,
 	w = window;
 
+/* EVENTS------------------------------ */
+
 d.addEventListener("DOMContentLoaded", e => { 
 	console.log("Documento cargado");
 	//getSheet("/v1/9WI8tRU1SFaC/academias-gastronomicas-caracas/Academias_gastronomicas");
@@ -9,23 +11,37 @@ d.addEventListener("DOMContentLoaded", e => {
 
 d.addEventListener("click",e => { 
 	if(e.target.matches("#addClient input[type='submit']")){ 
-		e.preventDefault();
-		//agregarDataAcademiaGastronomicas(e); 
+		agregarDataAcademiaGastronomicas(e); 
 	}
 
 	if(e.target.matches('#addVendedor input[type="submit"]')){
-
 		gettingDataOfFormVendedor(e);
-
 	}
 
 	if(e.target.matches(".addFormActiveList li")){
-
 		activeAddForm(e);
 		checkVisibility();
+	}
 
-	} 
+	if(e.target.matches(".btn-showmore > button")){
+		showingMoreContainers(e);
+	}
+
+	if(e.target.matches("#PUT-CLIENT")){
+		putClient(e);
+	}
+
+	if(e.target.matches("#MIN-VIEW")){
+		minView(e);
+	}
+	
 })
+
+w.addEventListener("load",e => {
+	console.log("Documento cargado completamente")
+})
+
+/* .................................. */
 
 const activeAddForm = (e) => {
 	
@@ -40,23 +56,29 @@ const activeAddForm = (e) => {
 
 const agregarDataAcademiaGastronomicas = (e) => { 
 
-	console.log(e);
 	const $form = e.target.closest("form"), 
-	$nombre = $form.nombre,
-	$direccion = $form.direccion, 
-	$telefono = $form.telefono, 
-	$email = $form.email, 
-	$web = $form.web, 
-	$comentarios = $form.querySelector(".comentarios"), 
-	$esVisitado = $form.esVisitado,
-	$btnAgregar = $form.agregar;
+	$nombre = $form.nombre.value,
+	$direccion = $form.direccion.value, 
+	$telefono = $form.telefono.value, 
+	$email = $form.email.value, 
+	$web = $form.web.value, 
+	$comentarios = $form.querySelector(".comentarios").value, 
+	$esVisitado = $form.esVisitado.value,
+	$btnAgregar = $form.agregar.value;
 
-	console.log($nombre.value, $email.value, $comentarios.value,
-	$esVisitado.value, $btnAgregar.value);
+	if(!$nombre || !$telefono || !$direccion){
+		e.preventDefault();
+		return alert('Los campos deben ser llenados')
+	}
+
+	console.log($nombre, $email, $comentarios,
+	$esVisitado, $btnAgregar);
 
 	$form.reset() 
 
 }
+
+/* Obtener, leer, los datos */
 
 const getSheetAcademiaGastronomica = (url) => {
 
@@ -65,6 +87,8 @@ const getSheetAcademiaGastronomica = (url) => {
  .then(json => console.log(json))
 
 }
+
+/* ............. */
 
 
 const gettingDataOfFormVendedor = (e) => {
@@ -152,10 +176,6 @@ const deleteRowSheetVendedor = () => {
 	
 }
 
-w.addEventListener("load",e => {
-	console.log("Documento cargado completamente")
-})
-
 const checkVisibility = () => {
 	//console.log("Chequeando");
 	let $elActive = d.querySelector(".addFormActive");
@@ -188,4 +208,64 @@ const checkVisibility = () => {
 
 	}
 	
+}
+
+const showingMoreContainers = e => {
+
+	let id = e.target.getAttribute("data-id");
+
+	if(e.target.textContent === "+"){
+		e.target.textContent = "-"
+	}else{
+		e.target.textContent = "+"
+	}
+
+	let	$cardTarget = d.querySelector(`.card-${id}`),
+	$navTarget = d.querySelector(`.${id}-menu-container`),
+	height = $cardTarget.clientHeight + $navTarget.clientHeight,
+	$listAllTarget = d.querySelector(`.list-all-${id}`),
+	info = $cardTarget.getBoundingClientRect(),
+	{bottom} = info;
+
+	if($listAllTarget.classList.contains("showed")){
+		$listAllTarget.classList.remove("showed");
+		$listAllTarget.style.height = "10vh";
+		return ""
+	}
+
+	$listAllTarget.classList.add("showed");
+
+	$listAllTarget.style.height = `${height + 50}px`;
+
+	setTimeout(() => {
+		scrollTo({
+			top: bottom,
+			behavior: "smooth"
+		})
+		
+	}, 500);
+
+}
+
+const putClient = e => {
+	console.log(e);
+}
+
+const minView = e => {
+
+	let id = e.target.getAttribute("data-id"),
+	$listAllTarget = d.querySelector(`.list-all-${id}`),
+	info = $listAllTarget.getBoundingClientRect(),
+	{top} = info;
+
+	scrollTo({
+		top,
+		behavior: "smooth"
+	})
+
+	if($listAllTarget.classList.contains("showed")){
+		$listAllTarget.classList.remove("showed");
+		$listAllTarget.style.height = "10vh";
+		return ""
+	}
 }
