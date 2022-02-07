@@ -66,7 +66,7 @@ input[type="submit"], select{
 	cursor: pointer;
 }
 
-.clientCard{
+.card{
 	background: #650000;
 	box-shadow: 0 10px 10px #ccc;
 	color: #fff;
@@ -77,11 +77,40 @@ input[type="submit"], select{
 	padding: 1rem;
 }
 
+.card-clientes{
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.card-clientes div:first-child{
+	width: 65%;
+}
+
+.card-clientes-options{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-end;
+	height: 30vh;
+	width: 35%;
+}
+
+.card-clientes-options-CRUD{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.card-clientes-options-CRUD button{
+	padding: .5rem;
+}
+
 .addDataContainer{
-	/*align-items: center;*/
+	/* align-items: center; */
 	justify-content: center;
 	display: flex;
-	height: 100vh;
+	height: 85vh;
 	max-height: 1200px;
 	width: 100%;
 }
@@ -133,4 +162,64 @@ input[type="submit"], select{
 [data-add-form-active]{
 	opacity: 1;
 	visibility: visible;
+}
+
+.menu-container{
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: .5rem 1rem;
+}
+
+/* .containerVendedores{
+	opacity: 0;
+	visibility: hidden;
+	transition: .5s all ease;
+}
+
+.visible{
+	display: block;
+	opacity: 1;
+	visibility: visible;
+} */
+
+.btn{
+	background-color: var(--first-color);
+	border: none;
+	border-radius: 10px;
+	box-shadow: 0 5px 20px 0px #bbb;
+	color: #fff;
+	cursor: pointer;
+	padding: .5rem;
+	font-weight: bold;
+	transition: .5s all ease;
+}
+
+.btn:hover{
+	background: #fff;
+	color: var(--first-color);
+}
+
+.list-all-container{
+	height: 10vh;
+	overflow: hidden;
+	width: 100%;
+	transition: 1s all ease;
+}
+
+.btnSubmit{
+	background: var(--first-color);
+	border: #fff thin solid;
+	color: #fff;
+	cursor: pointer;
+	font-weight: bold;
+	border-radius: 5px;
+	margin-bottom: .5rem;
+	transition: .5s all ease;
+}
+
+.btnSubmit:hover{
+	background: #fff;
+	border: var(--first-color) thin solid;
+	color: var(--first-color);
 }
