@@ -6,11 +6,7 @@
 </head>
 <body>
 
-	<h1>Prueba para hoja de clientes</h1>
-
-	<div>
-		<h2>Zona para conocer los ID ocupados</h2>
-	</div>
+	<h1>Administrar hoja de academias gastronomicas</h1>
 
 	<hr>
 
@@ -47,7 +43,7 @@
 					<option value="no">No</option>
 				</select>
 
-				<input type="submit" name="agregar">
+				<input type="submit" name="agregar" class="btnSubmit">
 			</form>
 		</div>
 		
@@ -63,33 +59,89 @@
 
 				<textarea class="comentarios" placeholder="Comentarios" required></textarea>
 
-				<input type="submit" name="agregar">
+				<input type="submit" name="agregar" class="btnSubmit">
 			</form>
 		</div>
 	</div>
 
 	<hr>
 
-	<div>
-		<h2>Lista de clientes registrados</h2>
+	<div class="list-all-clientes list-all-container">
+		<nav class="clientes-menu-container menu-container">
+			<h2>Lista de clientes registrados</h2>
+			<span class="btn-showmore">
+				<button 
+				class="btn" 
+				id="btn-showmore-clientes"
+				data-id="clientes">+</button>
+			</span>
+		</nav>
 
-		<div class="clientsContainer">
+		<div class="container container-clientes">
 
 
-			<div class="clientCard">
-				<p>Nombre: </p>
-				<p>Direccion: </p>
-				<p>Numero de telefono: </p>
-				<p>Correo electronico: </p>
-				<p>Pagina web: </p>
-				<p>Comentarios: </p>
-				<p>¿El cliente es visitado?</p>
+			<div class="card card-clientes">
+				<div>
+					<p>Nombre: </p>
+					<p>Direccion: </p>
+					<p>Numero de telefono: </p>
+					<p>Correo electronico: </p>
+					<p>Pagina web: </p>
+					<p>Comentarios: </p>
+					<p>¿El cliente es visitado?</p>
+				</div>
+				<div class="card-clientes-options">
+
+					<div class="card-clientes-options-CRUD">
+						<button 
+						class="btnSubmit" 
+						id="PUT-CLIENT">Actualizar</button>
+						<button 
+						class="btnSubmit" 
+						id="DELETE-CLIENT">Eliminar</button>
+						<button 
+						class="btnSubmit" 
+						id="SHOW-MAP-CLIENT">Mostrar mapa</button>
+						<button 
+						class="btnSubmit" 
+						id="MIN-VIEW"
+						data-id="clientes"
+						>Minimizar vista</button>
+					</div>
+		
+				</div>
 			</div>
 			
 		</div>
 	</div>
 
-<script type="text/javascript" src="./recursos/main.js">
-</script>
+	<hr>
+
+	<div class="list-all-vendedores list-all-container">
+		<nav class="vendedores-menu-container menu-container">
+			<h2>Lista de vendedores registrados</h2>
+			<span class="btn-showmore">
+				<button 
+					class="btn" 
+					id="btn-showmore-vendedores"
+					data-id="vendedores">+</button>
+			</span>
+		</nav>
+
+		<div class="container container-vendedores">
+
+
+			<div class="card card-vendedores">
+				<p>Nombre: </p>
+				<p>Zona: </p>
+				<p>Numero de telefono: </p>
+				<p>Comentarios: </p>
+			</div>
+			
+		</div>
+	</div>
+
+	<script type="text/javascript" src="./recursos/main.js">
+	</script>
 </body>
 </html>
